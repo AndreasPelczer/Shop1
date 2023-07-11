@@ -100,7 +100,7 @@ fun anzeigenWarenkorb(user: User) {
 }
 
 fun checkout(user: User) {
-    val gesamtPreis = user.warenkorb.sumByDouble { it.preis }
+    val gesamtPreis = user.warenkorb.sumOf { it.preis }
     println("Gesamtpreis: $gesamtPreis")
     println("Vielen Dank für Ihren Einkauf, ${user.name}!")
     user.warenkorb.clear()
