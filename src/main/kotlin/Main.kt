@@ -40,7 +40,7 @@ fun shop() {
         println("2. Artikel zum Warenkorb hinzufügen")
         println("3. Artikel aus dem Warenkorb entfernen")
         println("4. Warenkorb anzeigen")
-        println("5. Checkout")
+        println("5. zur Kasse")
         println("0. Beenden")
         print("Auswahl: ")
         val auswahl = readLine()?.toIntOrNull() ?: continue

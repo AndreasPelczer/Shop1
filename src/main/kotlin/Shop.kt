@@ -29,23 +29,33 @@ open class Shop {
         val auswahl = readLine()?.toIntOrNull()
 
         when (auswahl) {
-            1 -> {
-                for (artikel in artikelListe.sortedBy { it.preis }) {
-                    println(" ${artikel.name} - ${artikel.preis}")
-                }
-            }
+            1 -> if (artikelListe.isEmpty()){
+                println("keine Artikel vorhanden")
+            }else{
+                println("Verfügbare Artikel (nach Preis aufsteigend sortiert):")
+                val sortierteArtikel = artikelListe.sortedBy { it.preis }
+                sortierteArtikel.forEachIndexed { index, artikel ->
+                    println("${index + 1}. ${artikel.name} - ${artikel.preis}")
+                }}
 
-            2 -> {
-                for (artikel in artikelListe.reversed().sortedBy { it.preis }) {
-                    println(" ${artikel.name} - ${artikel.preis}")
-                }
-            }
 
-            3 ->{
-                for (artikel in artikelListe.sortedByDescending { it.name }) {
-                    println(" ${artikel.name} - ${artikel.preis}")
-                }
-            }
+            2 -> if (artikelListe.isEmpty()){
+                println("keine Artikel vorhanden")
+            }else{
+                println("Verfügbare Artikel (nach Preis absteigend sortiert):")
+                val sortierteArtikel = artikelListe.sortedByDescending { it.preis }
+                sortierteArtikel.forEachIndexed { index, artikel ->
+                    println("${index + 1}. ${artikel.name} - ${artikel.preis}")
+                }}
+
+            3 ->if (artikelListe.isEmpty()){
+                println("keine Artikel vorhanden")
+            }else{
+                println("Verfügbare Artikel (nach Preis absteigend sortiert):")
+                val sortierteArtikel = artikelListe.sortedBy { it.name }
+                sortierteArtikel.forEachIndexed { index, artikel ->
+                    println("${index + 1}. ${artikel.name} - ${artikel.preis}")
+                }}
             0-> {
             println("Auf Wiedersehen!")
             return
