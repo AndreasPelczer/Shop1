@@ -26,9 +26,7 @@ open class Shop {
         println(" 3 <- Alphabetisch sortiert")
         println("")
 
-        val auswahl = readLine()?.toIntOrNull()
-
-        when (auswahl) {
+        when (readlnOrNull()?.toIntOrNull()) {
             1 -> if (artikelListe.isEmpty()){
                 println("keine Artikel vorhanden")
             }else{
