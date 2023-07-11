@@ -51,7 +51,7 @@ open class Shop {
             3 ->if (artikelListe.isEmpty()){
                 println("keine Artikel vorhanden")
             }else{
-                println("Verfügbare Artikel (nach Preis absteigend sortiert):")
+                println("Verfügbare Artikel (nach Namen sortiert):")
                 val sortierteArtikel = artikelListe.sortedBy { it.name }
                 sortierteArtikel.forEachIndexed { index, artikel ->
                     println("${index + 1}. ${artikel.name} - ${artikel.preis}")
