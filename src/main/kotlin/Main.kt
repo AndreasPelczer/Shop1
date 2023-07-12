@@ -10,9 +10,7 @@ fun main() {
         println("2. Registrieren")
         println("3. Beenden")
 
-        val userInput = readLine()
-
-        when (userInput) {
+        when (readlnOrNull()) {
             "1" -> einloggen()
             "2" -> registrieren()
             "3" -> {
@@ -43,13 +41,13 @@ fun shop() {
         println("5. zur Kasse")
         println("0. Beenden")
         print("Auswahl: ")
-        val auswahl = readLine()?.toIntOrNull() ?: continue
+        val auswahl = readlnOrNull()?.toIntOrNull() ?: continue
 
         when (auswahl) {
             1 -> shop.anzeigenArtikel()
             2 -> {
                 println("Bitte geben Sie den Index des Artikels ein, den Sie zum Warenkorb hinzufügen möchten:")
-                val artikelIndex = readLine()?.toIntOrNull()
+                val artikelIndex = readlnOrNull()?.toIntOrNull()
                 if (artikelIndex != null) {
                     artikelHinzufuegenWarenkorb(user, artikelIndex)
                 } else {
@@ -58,7 +56,7 @@ fun shop() {
             }
             3 -> {
                 println("Bitte geben Sie den Index des Artikels ein, den Sie aus dem Warenkorb entfernen möchten:")
-                val artikelIndex = readLine()?.toIntOrNull()
+                val artikelIndex = readlnOrNull()?.toIntOrNull()
                 if (artikelIndex != null) {
                     artikelEntfernen(user, artikelIndex)
                 } else {
@@ -81,9 +79,9 @@ fun shop() {
 
 fun einloggen() {
     println("E-Mail Adresse eingeben:")
-    val email = readLine()
+    val email = readlnOrNull()
     println("Passwort eingeben:")
-    val password = readLine()
+    val password = readlnOrNull()
 
 
     if (email != null && password != null && isValidEmail(email) && isCorrectPassword(email, password)) {
@@ -98,12 +96,13 @@ fun einloggen() {
 }
 fun artikelHinzufuegenLager() {
     println("Bitte geben Sie den Namen des Artikels ein: ")
-    val artikelName = readLine()
+    val artikelName = readlnOrNull()
     println("Bitte geben Sie den Preis des Artikels ein: ")
-    val artikelPreis = readLine()?.toDoubleOrNull()
-    var neuerArtikel = artikelName + artikelPreis
+    val artikelPreis = readlnOrNull()?.toDoubleOrNull()
+    println("Bitte geben Sie die Kathegorie des Artikels ein: ")
+    val artikelKathegorie = readlnOrNull()?.toDoubleOrNull()
     if (artikelName != null && artikelPreis != null) {
-        val neuerArtikel = Artikel(artikelName, artikelPreis)
+        val neuerArtikel = Artikel(artikelName, artikelPreis, artikelKathegorie.toString())
         artikelListe.add(neuerArtikel)
         admin()
     } else {
@@ -113,12 +112,11 @@ fun artikelHinzufuegenLager() {
 }
 fun artikelEntfernen(){
     println("Bitte geben Sie den Namen des Artikels ein der gelöscht werden soll: ")
-    val artikelName = readLine()
+    val artikelName = readlnOrNull()
     println("Bitte geben Sie den Preis des Artikels ein: ")
-    val artikelPreis = readLine()?.toDoubleOrNull()
-    var artikel = artikelName + artikelPreis
+    val artikelPreis = readlnOrNull()?.toDoubleOrNull()
     if (artikelName != null && artikelPreis != null) {
-        val artikel = Artikel(artikelName, artikelPreis)
+        val artikel = Artikel(artikelName, artikelPreis, artikelKathegorie = String())
         artikelListe.remove(artikel)
     } else {
         println("Ungültige Eingabe.")
@@ -128,9 +126,9 @@ fun artikelEntfernen(){
 }
 fun registrieren() {
     println("E-Mail Adresse eingeben:")
-    val email = readLine()
+    val email = readlnOrNull()
     println("Passwort eingeben:")
-    val password = readLine()
+    val password = readlnOrNull()
 
     if (email != null && password != null && isValidEmail(email)) {
         if (eMailListe.containsKey(email)) {
@@ -161,9 +159,8 @@ fun admin(){
     println("3. Artikel aus Lager entfernen")
     println("4. Logout")
     print("Auswahl: ")
-    val auswahl = readLine()?.toIntOrNull()
 
-    when (auswahl) {
+    when (readlnOrNull()?.toIntOrNull()) {
         1 -> artikelHinzufuegenLager()
         2 -> anzeigenArtikel()
         3 -> artikelEntfernen()

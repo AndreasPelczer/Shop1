@@ -7,9 +7,9 @@ open class Shop {
 
     init {
         // übungsartikel
-        artikelListe.add(Artikel("Artikel 1", 10.99))
-        artikelListe.add(Artikel("Artikel 2", 5.99))
-        artikelListe.add(Artikel("Artikel 10", 8.99))
+        artikelListe.add(Artikel("Vase Hubert", 10.99,"Kunstobjekt"))
+        artikelListe.add(Artikel("Reagenzglas 53", 5.99,"Laborglas"))
+        artikelListe.add(Artikel("Bär", 8.99,"Kunstobjekt"))
     }
 
     fun login(benutzername: String, passwort: String): User? {
@@ -33,7 +33,7 @@ open class Shop {
                 println("Verfügbare Artikel (nach Preis aufsteigend sortiert):")
                 val sortierteArtikel = artikelListe.sortedBy { it.preis }
                 sortierteArtikel.forEachIndexed { index, artikel ->
-                    println("${index + 1}. ${artikel.name} - ${artikel.preis}")
+                    println("${index + 1}. ${artikel.name} - ${artikel.preis} ")
                 }}
 
 
@@ -43,7 +43,7 @@ open class Shop {
                 println("Verfügbare Artikel (nach Preis absteigend sortiert):")
                 val sortierteArtikel = artikelListe.sortedByDescending { it.preis }
                 sortierteArtikel.forEachIndexed { index, artikel ->
-                    println("${index + 1}. ${artikel.name} - ${artikel.preis}")
+                    println("${index + 1}. ${artikel.name} - ${artikel.preis} ")
                 }}
 
             3 ->if (artikelListe.isEmpty()){
