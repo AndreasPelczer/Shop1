@@ -1,6 +1,14 @@
 
 
-open class Kunstglas(name: String, preis: Double, val unterkategorie: String) : Artikel(name, preis, "Kunstobjekt") {
+open class Kunstglas(
+    name: String,
+    preis: Double,
+    unterkategorie: String)
+    : Artikel(
+    name,
+    preis,
+   unterkategorie
+) {
 
 }
 

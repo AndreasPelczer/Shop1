@@ -1,3 +1,3 @@
-open class Artikel(val name: String, val preis: Double, artikelKathegorie: String){
+open class Artikel(val name: String, val preis: Double, val unterkategorie: String){
 
 }
